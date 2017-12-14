@@ -1,15 +1,37 @@
 {
   "name": "openweather",
   "version": "1.0.0",
-  "description": "",
+  "description": "### Objectif",
   "main": "index.js",
   "dependencies": {
-    "jquery": "^3.2.1"
+    "gulp": "^3.9.1",
+    "jquery": "^3.2.1",
+    "autoprefixer": "^7.1.0",
+    "browser-sync": "^2.18.11",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-connect-php": "^1.0.1",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-notify": "^3.0.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-scss-lint": "^0.4.0",
+    "gulp-uglify": "^3.0.0",
+    "pump": "^2.0.0"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Krisimplon/Meteo.git"
+  },
+  "keywords": [
+    "simplon8"
+  ],
+  "bugs": {
+    "url": "https://github.com/Krisimplon/Meteo/issues"
+  },
+  "homepage": "https://github.com/Krisimplon/Meteo#readme"
 }

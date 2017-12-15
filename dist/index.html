@@ -1,37 +1,59 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title></title>
-        <meta name="description" content="">
+        <title>Météo</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+        integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+        crossorigin=""/>
 
         <link rel="manifest" href="site.webmanifest">
         <link rel="apple-touch-icon" href="icon.png">
-        <!-- Place favicon.ico in the root directory -->
-
+        <!--Place favicon.ico in the root directory -->
         <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/style.css">
+        
+
     </head>
-    <body>
-        <!--[if lte IE 9]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
-
-        <!-- Add your site or application content here -->
-        <p>Hello world! This is HTML5 Boilerplate.</p>
-        <script src="js/vendor/modernizr-{{MODERNIZR_VERSION}}.min.js"></script>
-        <script src="https://code.jquery.com/jquery-{{JQUERY_VERSION}}.min.js" integrity="{{JQUERY_SRI_HASH}}" crossorigin="anonymous"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-{{JQUERY_VERSION}}.min.js"><\/script>')</script>
+    <body class="body">
+        <input type="text" name="recherche" id="search">
+        <button id="bouton">Search</button>
+        <div>
+            <ul class="card">
+                <li id="city"></li>
+                <li id="place"></li>
+                <li id="temp"></li>
+                <li id="pression"></li>
+                <li id="humid"></li>
+                <li id="wind"></li>
+            </ul>
+            <div id="map1"></div>
+        </div>
+        <div>
+            <ul class="card">
+                <li id="city2">Your City</li>
+                <li id="place2">GPS</li>
+                <li id="temp2">Temperature</li>
+                <li id="pression2">Pressure</li>
+                <li id="humid2">Humidity</li>
+                <li id="wind2">Speed Wind</li>
+            </ul>
+            <div id="map2"></div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="js/app.js"></script>
         <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
 
-        <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+        <!--Google Analytics: change UA-XXXXX-Y to be your site's ID-->
         <script>
             window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
             ga('create','UA-XXXXX-Y','auto');ga('send','pageview')
         </script>
+         <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
+         integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
+         crossorigin=""></script>
         <script src="https://www.google-analytics.com/analytics.js" async defer></script>
     </body>
 </html>

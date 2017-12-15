@@ -1,0 +1,22 @@
+.body {
+  background-color: silver;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: nowrap; }
+  .body #search {
+    width: 35%; }
+  .body .card {
+    width: 80%;
+    background-color: azure;
+    font-size: 20px;
+    border-style: solid;
+    border-color: darkred;
+    box-shadow: 1px 1px 12px black;
+    padding: 10%; }
+    .body .card #map1 {
+      height: 30px;
+      width: 45px; }
+    .body .card #map2 {
+      height: 30px;
+      width: 45px; }

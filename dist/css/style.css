@@ -15,8 +15,6 @@
     box-shadow: 1px 1px 12px black;
     padding: 10%; }
     .body .card #map1 {
-      height: 30px;
-      width: 45px; }
+      height: 100px; }
     .body .card #map2 {
-      height: 30px;
-      width: 45px; }
+      height: 100px; }

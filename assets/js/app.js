@@ -29,7 +29,9 @@ $.ajax({
     $('#humid').html('Humidity: '+humid+'%');
     $('#wind').html('Wind speed: '+wind+' m/sec');
 
-    var map = L.map('map1').setView([51.505, -0.09], 13);
+    var map = L.map('map1',{
+        center: [coordlon, coordlat],
+        zoom: 8 });
 
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -79,7 +81,10 @@ $("#bouton").click(function (formulaire) {
         $('#humid2').html('Humidity: '+humid+'%');
         $('#wind2').html('Wind speed: '+wind+' m/sec');
 
-        var map = L.map('map2').setView([51.505, -0.09], 13);
+        //var map = L.map('map2').setView([51.505, -0.09], 13);
+        var map = L.map('map2',{
+            center: [coordlon, coordlat],
+            zoom: 13 });
 
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

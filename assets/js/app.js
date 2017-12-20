@@ -52,10 +52,8 @@ console.log("complete");
 });
 
 
-var i = 0;
 
 $("#bouton").click(function (formulaire) {
-    i++;
     var requete = $('#search').val();
     
     // var requete = document.querySelector('#search').value
@@ -66,17 +64,19 @@ $("#bouton").click(function (formulaire) {
         dataType: 'json',
     })
     .done(function(res) {
-        
-        
-        var city = (res.name)
-        var coordlon = (res.coord.lon)
-        var coordlat = (res.coord.lat)
-        var temp = (res.main.temp)
-        var tempmin = (res.main.temp_min)
-        var tempmax = (res.main.temp_max)
-        var pressure = (res.main.pressure)
-        var humid = (res.main.humidity)
-        var wind = (res.wind.speed)
+        var city = res.name
+        var coordlon = res.coord.lon
+        var coordlat = res.coord.lat
+        var temp = res.main.temp
+        var tempmin = res.main.temp_min
+        var tempmax = res.main.temp_max
+        var pressure = res.main.pressure
+        var humid = res.main.humidity
+        var wind = res.wind.speed
+
+        if(map) map.remove()
+
+        $('#map2').html("<div id='map' style='width: 100%; height: 100%;'></div>");
         
         console.log(city, temp, tempmin, tempmax, pressure, humid);
         
@@ -99,7 +99,7 @@ $("#bouton").click(function (formulaire) {
         //map.setView([coordlat, coordlon], 13)
         
 
-        var map = L.map('map2',{
+        var map = L.map('map',{
             center: [coordlat, coordlon],
             zoom: 13 });
     
@@ -115,7 +115,7 @@ $("#bouton").click(function (formulaire) {
 
         var stockage = localStorage;
 
-        stockage.setItem(i, city);
+        stockage.setItem(city, JSON.stringify(res));
         
     })
 

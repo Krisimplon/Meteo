@@ -3,28 +3,36 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex-wrap: nowrap;
 
     #search {
         width: 35%;
     }
+
+    .box {
+        display: flex;
+        flex-direction: column;
+
+        .card {
+            height: 150px;
+            width: 400px;
+            background-color: azure;
+            font-size: 16px;
+            border-style: solid;
+            border-color: aquamarine;
+            box-shadow: 1px 1px 12px black;
+            padding: 7%;   
+            padding-block-start: 20px;       
+            }
     
-    .card {
-        width: 80%;
-        background-color: azure;
-        font-size: 20px;
-        border-style: solid;
-        border-color: darkred;
-        box-shadow: 1px 1px 12px black;
-        padding: 10%;
-
+                
         #map1 {
-            height: 100px;
+            height: 250px;
         }
-
+        
         #map2 {
-            height: 100px;
+            height: 250px;
         }
     }
-
 }
+
+

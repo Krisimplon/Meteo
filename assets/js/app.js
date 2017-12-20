@@ -4,6 +4,7 @@
 
 console.log('connect')
 
+
 $.ajax({
     url: 'http://api.openweathermap.org/data/2.5/weather?q=cahors&units=metric&APPID=7b721f0a9e9d92c7b2312b26d8a6bdfb',
     type: 'GET',
@@ -22,23 +23,23 @@ $.ajax({
     
     console.log(city, temp, tempmin, tempmax, pressure, humid);
     
-    $('#city').html('City: '+city);
-    $('#place').html('GPS Lon: '+coordlon+ ' Lat: '+coordlat);
-    $('#temp').html('Température: '+temp+'°C / Min: '+tempmin+'°C / Max: '+tempmax+'°C');
-    $('#pression').html('Pressure: '+pressure+' hPa');
-    $('#humid').html('Humidity: '+humid+'%');
-    $('#wind').html('Wind speed: '+wind+' m/sec');
+    $('#city').html('Ville : '+city);
+    $('#place').html('Position : '+coordlat+ ' - '+coordlon);
+    $('#temp').html('Température : '+temp+'°C / Min: '+tempmin+'°C / Max: '+tempmax+'°C');
+    $('#pression').html('Pression : '+pressure+' hPa');
+    $('#humid').html('Humidité : '+humid+'%');
+    $('#wind').html('Vent : '+wind+' m/sec');
 
     var map = L.map('map1',{
-        center: [coordlon, coordlat],
-        zoom: 8 });
+        center: [coordlat, coordlon],
+        zoom: 13 });
 
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
     
-    L.marker([51.5, -0.09]).addTo(map)
-        .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+    L.marker([coordlat, coordlon]).addTo(map)
+        .bindPopup('Vous êtes ici')
         .openPopup();
 })
 
@@ -51,9 +52,12 @@ console.log("complete");
 });
 
 
+var i = 0;
 
 $("#bouton").click(function (formulaire) {
+    i++;
     var requete = $('#search').val();
+    
     // var requete = document.querySelector('#search').value
     console.log(requete)
     $.ajax({
@@ -62,6 +66,8 @@ $("#bouton").click(function (formulaire) {
         dataType: 'json',
     })
     .done(function(res) {
+        
+        
         var city = (res.name)
         var coordlon = (res.coord.lon)
         var coordlat = (res.coord.lat)
@@ -74,26 +80,48 @@ $("#bouton").click(function (formulaire) {
         
         console.log(city, temp, tempmin, tempmax, pressure, humid);
         
-        $('#city2').html('City: '+city);
-        $('#place2').html('GPS Lon: '+coordlon+ ' Lat: '+coordlat);
-        $('#temp2').html('Température: '+temp+'°C / Min: '+tempmin+'°C / Max: '+tempmax+'°C');
-        $('#pression2').html('Pressure: '+pressure+' hPa');
-        $('#humid2').html('Humidity: '+humid+'%');
-        $('#wind2').html('Wind speed: '+wind+' m/sec');
+        $('#city2').html('Ville : '+city);
+        $('#place2').html('Position : '+coordlat+ ' - '+coordlon);
+        $('#temp2').html('Température : '+temp+'°C / Min: '+tempmin+'°C / Max: '+tempmax+'°C');
+        $('#pression2').html('Pression : '+pressure+' hPa');
+        $('#humid2').html('Humidité : '+humid+'%');
+        $('#wind2').html('Vent : '+wind+' m/sec');
 
-        //var map = L.map('map2').setView([51.505, -0.09], 13);
+        //creation de la map
+        //var map = new L.map('map2')
+        //creation des layers(calques)
+        //var layerMap = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        //   attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+       // })
+        //var layerMarker = L.marker([coordlat, coordlon])
+        //layerMarker.bindPopup('Vous êtes ici').openPopup();
+        //initialisaton de la map et attribution des layers
+        //map.setView([coordlat, coordlon], 13)
+        
+
         var map = L.map('map2',{
-            center: [coordlon, coordlat],
+            center: [coordlat, coordlon],
             zoom: 13 });
+    
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        
+        L.marker([coordlat, coordlon]).addTo(map)
+            .bindPopup('Vous êtes ici')
+            .openPopup();
 
-L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
+        //map.remove(city);
 
-L.marker([51.5, -0.09]).addTo(map)
-    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-    .openPopup();
+        var stockage = localStorage;
 
+        stockage.setItem(i, city);
+        
+    })
+
+    .fail(function(err) {
+        console.log(err);
+        alert('Recherche impossible')
     })
        
 });

@@ -3,7 +3,7 @@
 // ajaxGet("https://www.openweathermap.org/current", function (reponse)
 
 $.ajax({
-    url: 'http://api.openweathermap.org/data/2.5/weather?q=cahors&units=metric&APPID=7b721f0a9e9d92c7b2312b26d8a6bdfb',
+    url: 'https://api.openweathermap.org/data/2.5/weather?q=cahors&units=metric&APPID=7b721f0a9e9d92c7b2312b26d8a6bdfb',
     type: 'GET',
     dataType: 'json',
 })
@@ -58,7 +58,7 @@ $("#bouton").click(function (formulaire) {
     // var requete = document.querySelector('#search').value
     console.log(requete)
     $.ajax({
-        url: 'http://api.openweathermap.org/data/2.5/weather?q='+requete+'&units=metric&APPID=7b721f0a9e9d92c7b2312b26d8a6bdfb',
+        url: 'https://api.openweathermap.org/data/2.5/weather?q='+requete+'&units=metric&APPID=7b721f0a9e9d92c7b2312b26d8a6bdfb',
         type: 'GET',
         dataType: 'json',
     })

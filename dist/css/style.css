@@ -5,20 +5,26 @@
   align-items: center; }
   .body #search {
     width: 35%; }
-  .body .box {
+  .body .weather {
     display: flex;
-    flex-direction: column; }
-    .body .box .card {
-      height: 150px;
-      width: 400px;
+    flex-direction: row; }
+    .body .weather .box {
+      display: flex;
+      flex-direction: column;
       background-color: azure;
-      font-size: 16px;
       border-style: solid;
       border-color: aquamarine;
-      box-shadow: 1px 1px 12px black;
-      padding: 7%;
-      padding-block-start: 20px; }
-    .body .box #map1 {
-      height: 250px; }
-    .body .box #map2 {
-      height: 250px; }
+      box-shadow: 1px 1px 12px black; }
+      .body .weather .box .card {
+        height: 150px;
+        width: 400px;
+        font-size: 16px;
+        padding: 7%;
+        padding-block-start: 20px;
+        margin-right: 25px; }
+      .body .weather .box #map1 {
+        display: flex;
+        height: 250px; }
+      .body .weather .box #map2 {
+        display: flex;
+        height: 250px; }

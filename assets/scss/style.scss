@@ -8,31 +8,41 @@
         width: 35%;
     }
 
-    .box {
+    .weather {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
 
-        .card {
-            height: 150px;
-            width: 400px;
+        .box {
+            display: flex;
+            flex-direction: column;
             background-color: azure;
-            font-size: 16px;
             border-style: solid;
             border-color: aquamarine;
             box-shadow: 1px 1px 12px black;
-            padding: 7%;   
-            padding-block-start: 20px;       
-            }
     
-                
-        #map1 {
-            height: 250px;
-        }
-        
-        #map2 {
-            height: 250px;
+    
+            .card {
+                height: 150px;
+                width: 400px;
+                font-size: 16px;
+                padding: 7%;   
+                padding-block-start: 20px; 
+                margin-right: 25px;      
+                }
+                    
+            #map1 {
+                display: flex;
+                height: 250px;
+            }
+            
+            #map2 {
+                display: flex;
+                height: 250px;
+            }
         }
     }
+
+
 }
 
 

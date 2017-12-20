@@ -2,15 +2,13 @@
 
 // ajaxGet("https://www.openweathermap.org/current", function (reponse)
 
-console.log('connect')
-
-
 $.ajax({
     url: 'http://api.openweathermap.org/data/2.5/weather?q=cahors&units=metric&APPID=7b721f0a9e9d92c7b2312b26d8a6bdfb',
     type: 'GET',
     dataType: 'json',
 })
 .done(function(res) {
+    //création des variables contenant les résultats de l'API
     var city = (res.name)
     var coordlon = (res.coord.lon)
     var coordlat = (res.coord.lat)
@@ -29,16 +27,17 @@ $.ajax({
     $('#pression').html('Pression : '+pressure+' hPa');
     $('#humid').html('Humidité : '+humid+'%');
     $('#wind').html('Vent : '+wind+' m/sec');
-
-    var map = L.map('map1',{
-        center: [coordlat, coordlon],
-        zoom: 13 });
+    //remplacement dynamique des champs html par les résultats recherchés par les variables
+    //insertion de la map venant de l'API
+    var map = L.map('map1',{ // définition de la map et de son emplacement
+        center: [coordlat, coordlon], //donner les coordonées des résultats
+        zoom: 13 }); 
 
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
+    }).addTo(map); //création du calque de la carte
     
-    L.marker([coordlat, coordlon]).addTo(map)
+    L.marker([coordlat, coordlon]).addTo(map) //création du marqueur
         .bindPopup('Vous êtes ici')
         .openPopup();
 })
@@ -74,8 +73,9 @@ $("#bouton").click(function (formulaire) {
         var humid = res.main.humidity
         var wind = res.wind.speed
 
+        //si la map existe, l'effacer pour une nouvelle requête
         if(map) map.remove()
-
+        //recréer une div pour accueillir la new map
         $('#map2').html("<div id='map' style='width: 100%; height: 100%;'></div>");
         
         console.log(city, temp, tempmin, tempmax, pressure, humid);
@@ -111,11 +111,9 @@ $("#bouton").click(function (formulaire) {
             .bindPopup('Vous êtes ici')
             .openPopup();
 
-        //map.remove(city);
-
+        //création du stockage des villes dans le localstorage
         var stockage = localStorage;
-
-        stockage.setItem(city, JSON.stringify(res));
+        stockage.setItem(city, JSON.stringify(res)); //JSON va remplacer l'objet par un string
         
     })
 
